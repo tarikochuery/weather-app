@@ -1,0 +1,30 @@
+.today-forecast{
+    width: 100%;
+    align-self: flex-start;
+}
+
+.today-forecast .today-card{
+    margin: 1rem auto;
+    max-width: 20rem;
+    height: 25rem;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-around;
+    border: .1rem solid black;
+    border-radius: 1.5rem;
+    box-shadow: .25rem .25rem .5rem black;
+}
+
+.today-forecast .today-card .icon{
+    font-size: 5rem;
+}
+
+.today-forecast div h2{
+    font-size: 2.5rem;
+}
+
+.today-forecast div p{
+    font-size: 1.7rem;
+    text-align: center;
+}

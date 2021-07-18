@@ -1,0 +1,24 @@
+header{
+    align-self: flex-start;
+    width: 100%;
+}
+
+hgroup{
+    padding: 1rem;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    text-align: center;
+}
+
+hgroup h1{
+    font-size: 5rem;
+}
+
+hgroup h2{
+    font-size: 3rem;
+}
+
+hgroup h3{
+    font-size: 1.5rem;
+}

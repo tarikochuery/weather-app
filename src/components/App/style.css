@@ -1,0 +1,28 @@
+.container{
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    /* background-image: linear-gradient(rgba(255, 0, 0,.7), rgba(255, 255, 0, .7)); */
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: top;
+}
+
+.rising{
+    background-image: linear-gradient(rgba(255, 0, 0,.7), rgba(255, 255, 0, .7));
+}
+
+.day{
+    background: #22c1c3;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #fdbb2d, #22c1c3);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #fdbb2d, #22c1c3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.night{
+    color: white;
+    background: rgb(2,0,36);
+    background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+}
