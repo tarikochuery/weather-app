@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     
-    if (time >= 5 && time <= 8){
+    if (time >= 5 && time < 8){
       setBg(`rising`)
     } else if (time >= 8 && time <= 18) {
       setBg(`day`)
