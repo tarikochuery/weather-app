@@ -45,7 +45,7 @@ const ForecastCard = (props) => {
 
         return () => ignore = true
 
-    },[data])
+    },[getCoord])
 
 
     if (data && data.length !== 0){
