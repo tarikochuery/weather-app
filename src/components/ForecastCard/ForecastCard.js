@@ -29,22 +29,27 @@ const ForecastCard = (props) => {
     }
 
     useEffect(() => {
+        let ignore = false
 
         getCoord().then((position) => {
             options.params.lat = position[0]
             options.params.lon = position[1]
         }).then(() => {
             axios(options)
-            .then((res) => compareDays(res.data.data))
+            .then((res) =>{
+                if (!ignore) compareDays(res.data.data)
+            })
             .catch((err) => console.log('An Error has occurred!' + err))
            
         })
 
-    },[])
+        return () => ignore = true
+
+    },[data])
 
 
-    if (data && data.length != 0){
-        console.log(data)
+    if (data && data.length !== 0){
+        // console.log(data)
         return(
             <>
                 <div className='forecast-card'>

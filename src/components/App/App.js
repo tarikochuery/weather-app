@@ -5,7 +5,8 @@ import TodayForecast from '../TodayForecast/TodayForecast';
 import './style.css'
 
 function App() {
-  const [time, setTime] = useState(new Date().getHours())
+  const date = new Date()
+  const time = date.getHours()
   const [bg, setBg] = useState('')
 
 
@@ -19,7 +20,7 @@ function App() {
       setBg(`night`)
     }
 
-  },[])
+  },[time])
 
   return (
     <div className={`container ${bg}`}>
