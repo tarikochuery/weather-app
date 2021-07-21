@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import './style.css'
 import { weekDay } from '../../services/GetDayNTime'
-import { options } from '../../services/WeatherAPI'
+import  { getCoord, options }  from '../../services/WeatherAPI'
 import WeatherIcon from 'react-icons-weather'
-const axios = require("axios").default;
+import axios from 'axios'
+
 
 const Clock = () => {
     const [date, setDate] = useState(new Date())
@@ -32,44 +33,36 @@ const Clock = () => {
 }
 
 const TodayForecast = () => {
-    const [temperature, setTemperature] = useState()
-    const [description, setDescription] = useState()
-    const [icon, setIcon] = useState()
+    const [data, setData] = useState()
 
     useEffect(() => {
-        let temp
-        let descript
-        let id
 
-        axios.request(options).then(function (response) {
-            temp = response.data.list[0].main.temp
-            descript = response.data.list[0].weather[0].description
-            id = response.data.list[0].weather[0].id
-
-            descript = descript.replace(descript[0], descript[0].toUpperCase())
-
-            setTemperature(temp.toFixed(0))
-            setDescription(descript)
-            setIcon(id)
-            
-        }).catch(function (error) {
-            console.error(error)
-        });
+        getCoord()
+        .then((position) => {
+            options.params.lat = position[0]
+            options.params.lon = position[1]
+        })
+        .then(() => {
+            axios(options).then((res) => {
+                            console.log('Requisição Feita')
+                            setData(res.data.data[0])
+                           })
+                           .catch((err) => console.error('Ops! An error has occured!' + err))
+        })
         
-    }, [])
-
-
-    if (temperature && icon && description){
+        },[])
+        
+    if (data){
         return(
             <>
                 <div className='today-forecast'>
                     <div className='today-card'>
                         <Clock />
                         <div className='icon'>
-                        <WeatherIcon name='owm' iconId={icon.toString()}/>
+                        <WeatherIcon name='owm' iconId={data.weather.code.toString()}/>
                         </div>
-                        <p> {`${temperature}ºC`}</p>
-                        <p>{description}</p>
+                        <p> {`${data.temp}ºC`}</p>
+                        <p>{data.weather.description}</p>
                     </div>
                 </div>
             </>

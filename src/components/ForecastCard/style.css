@@ -20,3 +20,7 @@
 .forecast-card p{
     font-size: 1.35rem;
 }
+
+.forecast-card .icon{
+    font-size: 2rem;
+}

@@ -8,7 +8,9 @@ function App() {
   const [time, setTime] = useState(new Date().getHours())
   const [bg, setBg] = useState('')
 
-  const changeBg = (time) => {
+
+  useEffect(() => {
+    
     if (time >= 5 && time <= 8){
       setBg(`rising`)
     } else if (time >= 8 && time <= 18) {
@@ -16,20 +18,8 @@ function App() {
     } else if (time >= 19 || time <= 4) {
       setBg(`night`)
     }
-    console.log(bg)
-  }
 
-  const tick = () => setTime(new Date().getHours())
-
-  useEffect(() => {
-    const timerID = setInterval(
-      tick(), 
-      60000)
-    changeBg(time)
-    return(
-      () => clearInterval(timerID)
-    )
-  }, [time])
+  },[])
 
   return (
     <div className={`container ${bg}`}>
